@@ -1,5 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+
     <?php if ($this->session->userdata('success_msg')): ?>
     <div class="alert alert-success">
         <?= $this->session->userdata('success_msg'); ?>
@@ -15,15 +16,18 @@
         <!-- Hapus setelah ditampilkan -->
     </div>
     <?php endif; ?>
+
+
     <br>
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800"></h1>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Daftar Mata Pelajaran</h1>
-        <a href="<?=base_url('mapel/tambah')?>" class="btn btn-md btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Tambah
-            Data</a>
+        <h1 class="h3 mb-2 text-gray-800">Daftar Karya-Ku</h1>
+        <a href="<?= base_url('karyaku/tambah'); ?>" class="btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i>
+            Tambah Data
+        </a>
     </div>
 
     <!-- DataTales Example -->
@@ -37,34 +41,40 @@
                     <thead>
                         <tr>
                             <th width="1px">No.</th>
-                            <th>Mata Pelajaran</th>
+                            <th>Nama Karya</th>
+                            <th>File</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                            $no = 1;
-                            foreach($mapel as $val) {
-                                ?>
+                        <?php $no = 1; ?>
+                        <?php foreach ($karyaku as $row): ?>
                         <tr>
-                            <td align="center"><?= $no ; ?></td>
-                            <td><?= $val->nama; ?></td>
+                            <td align="center">
+                                <?= $no++; ?>
+                            </td>
                             <td>
-                                <a href="<?=base_url('mapel/edit/'.$val->uuid)?>" class="btn btn-sm btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="Edit Data">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="<?=base_url('mapel/hapus/'.$val->uuid)?>" class="btn btn-sm btn-danger"
-                                    data-toggle="tooltip" data-placement="top" title="Hapus Data"
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data <?= $val->nama; ?>?')">
-                                    <i class="fas fa-trash"></i>
+                                <?= $row->judul; ?>
+                            </td>
+                            <td align="center">
+                                <a href="<?= base_url('uploads/karya/' . $row->berkas) ?>" target="_blank"
+                                    class="btn btn-sm btn-primary">Klik Untuk Melihat</i>
                                 </a>
                             </td>
+                            <?php if($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2 ){?>
+                            <td align="center">
+                                <a href="<?=base_url('panduan/hapus/'.$row->uuid)?>" class="btn btn-sm btn-danger"
+                                    data-toggle="tooltip" data-placement="top" title="Hapus Data">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                <a href="<?=base_url('panduan/edit/'.$row->uuid)?>" class="btn btn-sm btn-warning"
+                                    data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                            <?php } ?>
                         </tr>
-                        <?php 
-                            $no++;
-                        }
-                        ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

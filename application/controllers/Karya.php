@@ -31,6 +31,5 @@ class Karya extends CI_Controller {
         $this->load->view('karya/karya', $data);
 		$this->load->view('partials/footer');
 	}
-    
-    
+
 }

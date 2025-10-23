@@ -58,21 +58,20 @@
     <?php if($this->session->userdata('role') == 1){?>
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item <?= $active_nav == 'guru' | $active_nav == 'siswa' | $active_nav == 'mapel' ?'active':'';?>">
+    <li class="nav-item <?= $active_nav == 'guru' | $active_nav == 'admin' ?'active':'';?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-database"></i>
             <span>Master Data</span>
         </a>
-        <div id="collapseTwo"
-            class="collapse <?= $active_nav == 'guru' | $active_nav == 'siswa' | $active_nav == 'mapel' ?'show':'';?>"
+        <div id="collapseTwo" class="collapse <?= $active_nav == 'guru' | $active_nav == 'admin' ?'show':'';?>"
             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                <a class="collapse-item <?= $active_nav == 'admin' ? 'active':'';?>" href="<?= base_url('admin')?>">Data
+                    Admin</a>
                 <a class="collapse-item <?= $active_nav == 'guru' ? 'active':'';?>" href="<?= base_url('guru')?>">Data
                     Guru</a>
-                <a class="collapse-item <?= $active_nav == 'mapel' ? 'active':'';?>" href="<?= base_url('mapel')?>">Data
-                    Mata Pelajaran</a>
             </div>
         </div>
     </li>
@@ -86,7 +85,7 @@
     <li class="nav-item <?= $active_nav == 'karyaku' ? 'active':'';?>">
         <a class="nav-link" href="<?= base_url('karyaku')?>">
             <i class="fas fa-fw fa-file-alt"> </i>
-            <span>Karya Ku</span></a>
+            <span>Karya-Ku</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->

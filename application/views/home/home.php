@@ -72,11 +72,7 @@
                 <nav id="navmenu" class="navmenu">
                     <ul>
                         <li><a href="" class="active">Home</a></li>
-                        <li><a href="<?= base_url('panduan')?>">Panduan</a></li>
-                        <li><a href="<?= base_url('materi')?>">Materi</a></li>
-                        <li><a href="<?= base_url('proyek')?>">Proyek</a></li>
-                        <li><a href="<?= base_url('ujian')?>">Ujian</a></li>
-                        <li><a href="<?= base_url('kalender')?>">Kalender</a></li>
+                        <li><a href="<?= base_url('karya')?>">Materi</a></li>
                         <?php if($this->session->userdata('role') == 1 ){?>
                         <li class="dropdown"><a href="#"><span>Master Data</span> <i
                                     class="bi bi-chevron-down toggle-dropdown"></i></a>
