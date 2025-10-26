@@ -4,7 +4,6 @@ class auth_model extends CI_Model
 {
 	private $_table_admin = 'admin';
 	private $_table_guru = 'guru';
-	private $_table_siswa = 'siswa';
 	const SESSION_KEY = 'uuid';
 
 	public function rules()
@@ -42,17 +41,7 @@ class auth_model extends CI_Model
 				$user = $query->row();
 				$role = '2';
 			} else {
-				//cek siswa
-				$this->db->where('username', $username);
-				$this->db->where('deleted_at', NULL, FALSE);
-				$query = $this->db->get($this->_table_siswa);
-				
-				if ($query->num_rows() > 0) {
-					$user = $query->row();
-					$role = '3';
-				} else {
-					return FALSE;
-				}
+				return FALSE;
 			}
 		}
         if (!password_verify($password, $user->password)) {

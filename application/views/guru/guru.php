@@ -41,7 +41,6 @@
                             <th width="1px">No.</th>
                             <th>Nama</th>
                             <th>Username</th>
-                            <th>Mata Pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -54,16 +53,6 @@
                             <td align="center"><?= $no ; ?></td>
                             <td><?= $val->nama; ?></td>
                             <td><?= $val->username; ?></td>
-                            <td>
-                                <?php if (!empty($val->mapel_nama)) : ?>
-                                <?php foreach ($val->mapel_nama as $i => $nama_mapel) : ?>
-                                <?= $nama_mapel ?>
-                                <?php if ($i !== array_key_last($val->mapel_nama)) : ?>
-                                <hr>
-                                <?php endif; ?>
-                                <?php endforeach; ?>
-                                <?php endif; ?>
-                            </td>
 
                             <td>
                                 <a href="<?=base_url('guru/edit/'.$val->uuid)?>" class="btn btn-sm btn-warning"

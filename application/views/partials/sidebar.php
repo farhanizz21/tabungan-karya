@@ -34,17 +34,17 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>">
-        <div class="sidebar-brand-icon">
+        <!-- <div class="sidebar-brand-icon">
             <img src="<?= base_url('assets/img/Logo_Smartedu.svg') ?>" alt="Smart Edu Logo" class="sidebar-logo">
-        </div>
-        <div class="sidebar-brand-text mx-2">Smart Edu</div>
+        </div> -->
+        <div class="sidebar-brand-text mx-2">Tabungan Karya</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item ">
+    <li class="nav-item <?= $active_nav == 'home' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url()?>">
             <i class="fas fa-fw fa-tachometer-alt"> </i>
             <span>Dashboard</span></a>
@@ -77,16 +77,21 @@
     </li>
     <?php } ?>
     <hr class="sidebar-divider">
-    <li class="nav-item <?= $active_nav == 'karya' ? 'active':'';?>">
-        <a class="nav-link" href="<?= base_url('karya')?>">
-            <i class="fas fa-fw fa-file-alt"> </i>
-            <span>Karya</span></a>
+
+    <li class="nav-item <?= $active_nav == 'karya' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('karya') ?>">
+            <i class="fas fa-fw fa-folder-open"></i>
+            <span>Daftar Karya</span>
+        </a>
     </li>
-    <li class="nav-item <?= $active_nav == 'karyaku' ? 'active':'';?>">
-        <a class="nav-link" href="<?= base_url('karyaku')?>">
-            <i class="fas fa-fw fa-file-alt"> </i>
-            <span>Karya-Ku</span></a>
+    <?php if($this->session->userdata('role') != 1){?>
+    <li class="nav-item <?= $active_nav == 'karyaku' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('karyaku') ?>">
+            <i class="fas fa-fw fa-user-edit"></i>
+            <span>Karya Saya</span>
+        </a>
     </li>
+    <?php } ?>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">

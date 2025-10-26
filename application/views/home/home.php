@@ -1,147 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/Logo_Smartedu.svg'); ?>">
-    <title>Dashboard - Smartedu</title>
-    <!-- Favicons -->
-    <!-- <link href="<?= base_url('assets_dashboard/img/favicon.png') ?>" rel="icon"> -->
-    <!-- <link href="<?= base_url('assets_dashboard/img/apple-touch-icon.png') ?>" rel="apple-touch-icon"> -->
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="<?= base_url('assets_dashboard/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('assets_dashboard/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('assets_dashboard/vendor/aos/aos.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('assets_dashboard/vendor/swiper/swiper-bundle.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('assets_dashboard/vendor/glightbox/css/glightbox.min.css') ?>" rel="stylesheet">
-
-    <!-- Main CSS File -->
-    <link href="<?= base_url('assets_dashboard/css/main.css') ?>" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Day
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body class="index-page">
-
-    <header id="header" class="header fixed-top">
-
-        <!-- <div class="topbar d-flex align-items-center">
-            <div class="container d-flex justify-content-center justify-content-md-between">
-                <div class="contact-info d-flex align-items-center">
-                    <i class="bi bi-envelope d-flex align-items-center"><a
-                            href="mailto:contact@example.com">contact@example.com</a></i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
-                </div>
-                <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-        </div> -->
-        <!-- End Top Bar -->
-
-        <div class="branding d-flex align-items-center">
-
-            <div class="container position-relative d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <!-- Uncomment the line below if you also wish to use an image logo -->
-                    <img src="<?= base_url('assets/img/Logo_Smartedu.svg') ?>" alt="">
-                    <h1 class="sitename">Smartedu</h1>
-                </a>
-
-                <nav id="navmenu" class="navmenu">
-                    <ul>
-                        <li><a href="" class="active">Home</a></li>
-                        <li><a href="<?= base_url('karya')?>">Materi</a></li>
-                        <?php if($this->session->userdata('role') == 1 ){?>
-                        <li class="dropdown"><a href="#"><span>Master Data</span> <i
-                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                            <ul>
-                                <li><a href="<?= base_url('guru')?>">Data Guru</a></li>
-                                <li><a href="<?= base_url('siswa')?>">Data Siswa</a></li>
-                                <li><a href="<?= base_url('mapel')?>">Data Mata Pelajaran</a></li>
-                            </ul>
-                        </li>
-                        <?php } ?>
-                        <li class="dropdown">
-                            <a href="#"><span>Hai, <?= $this->session->userdata('nama');?></span> <i
-                                    class="bi bi-chevron-down toggle-dropdown"></i>
-                            </a>
-                            <ul>
-                                <li><a href="<?= base_url('logout');?>">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-                </nav>
-            </div>
-
+<div class="container-fluid">
+    <!-- <h1 class="h3 mb-4 text-gray-800">Dashboard</h1> -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h5 class="font-weight-bold text-primary">Selamat Datang di Tabungan Karya</h5>
+            <p class="text-muted mb-0">
+                <strong>Tabungan Karya</strong> adalah platform digital untuk mendokumentasikan, mengelola,
+                dan menampilkan karya para guru dalam satu sistem terpadu.
+                Melalui website ini, guru dapat mengunggah karya inovatif, berbagi inspirasi,
+                serta membangun portofolio profesional yang berkelanjutan.
+            </p>
         </div>
+    </div>
 
-    </header>
 
-    <main class="main">
-
-        <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
-
-            <img src="assets_dashboard/img/bg.jpg" alt="" data-aos="fade-in">
-
-            <div class="container py-5" data-aos="fade-up" data-aos-delay="100">
-                <div class="row justify-content-start">
-                    <div class="col-lg-8">
-                        <h2>Welcome to Smartedu</h2>
-                        <h6>TERSTRUKTUR, EFISIEN, MUDAH DIAKSES </h6>
-                        <br>
-                        <p>Sebuah platform digital berbasis web yang dirancang khusus untuk mendukung
-                            kegiatan pembelajaran project-based learning di lingkungan sekolah</p>
+    <!-- Statistik Utama -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Guru</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_guru ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Karya</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_karya ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </section><!-- /Hero Section -->
-    </main>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Guru dengan Karya Terbanyak</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?= $guru_terbanyak ? $guru_terbanyak->nama : '-' ?></div>
+                            <small><?= $guru_terbanyak ? $guru_terbanyak->total_karya . ' karya' : '' ?></small>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Guru dengan Karya Tersedikit</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?= $guru_tersedikit ? $guru_tersedikit->nama : '-' ?></div>
+                            <small><?= $guru_tersedikit ? $guru_tersedikit->total_karya . ' karya' : '' ?></small>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <!-- Grafik Jumlah Karya per Guru -->
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Distribusi Jumlah Karya per Guru</h6>
+        </div>
+        <div class="card-body">
+            <canvas id="chartKaryaGuru" height="120"></canvas>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-primary text-white">
+            <h6 class="m-0 font-weight-bold">📂 Karya Terbaru</h6>
+        </div>
+        <div class="card-body">
+            <?php if (!empty($karya_terbaru)): ?>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Judul</th>
+                            <th>Pembuat</th>
+                            <th>Waktu Upload</th>
+                            <th>Lihat</th>
+                            <th>Komentar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($karya_terbaru as $k): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($k->judul, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($k->nama ?? 'Tidak diketahui', ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= date('d M Y, H:i', strtotime($k->modified_at)); ?> WIB</td>
+                            <td class="text-center">
+                                <?php if ($k->tipe_upload == 1): ?>
+                                <a href="<?= base_url('uploads/karya/' . $k->berkas); ?>" target="_blank"
+                                    class="btn btn-sm btn-primary">
+                                    <i class="fas fa-file"></i> Lihat File
+                                </a>
+                                <?php else: ?>
+                                <a href="<?= $k->link; ?>" target="_blank" class="btn btn-sm btn-success">
+                                    <i class="fas fa-link"></i> Lihat Link
+                                </a>
+                                <?php endif; ?>
+                            </td>
+                            <td class="text-center">
+                                <a href="javascript:void(0);" class="btn btn-sm btn-info btn-komentar"
+                                    data-karya_uuid="<?= $k->uuid; ?>" data-judul="<?= htmlspecialchars($k->judul); ?>">
+                                    <i class="fas fa-comments"></i> Komentar
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php else: ?>
+            <div class="text-center text-muted py-3">Belum ada karya yang diunggah.</div>
+            <?php endif; ?>
+        </div>
+    </div>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+    <!-- Komentar Terbaru -->
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Komentar Terbaru</h6>
+        </div>
+        <div class="card-body">
+            <?php if (!empty($komentar_terbaru)) : ?>
+            <ul class="list-group">
+                <?php foreach ($komentar_terbaru as $komen): ?>
+                <li class="list-group-item">
+                    <strong><?= $komen->guru_nama; ?></strong>
+                    <small><?= date('d M Y H:i', strtotime($komen->modified_at)); ?></small><br>
+                    <?= $komen->komentar; ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php else: ?>
+            <p class="text-muted">Belum ada komentar.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
 
-    <!-- Vendor JS Files -->
-    <script src="<?= base_url('assets_dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/php-email-form/validate.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/aos/aos.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/swiper/swiper-bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/glightbox/js/glightbox.min.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/imagesloaded/imagesloaded.pkgd.min.js') ?>"></script>
-    <script src="<?= base_url('assets_dashboard/vendor/isotope-layout/isotope.pkgd.min.js') ?>"></script>
-
-    <!-- Main JS File -->
-    <script src="<?= base_url('assets_dashboard/js/main.js') ?>"></script>
-
-</body>
-
-</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('chartKaryaGuru').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: <?= json_encode(array_column($karya_chart, 'nama')); ?>,
+        datasets: [{
+            label: 'Jumlah Karya',
+            data: <?= json_encode(array_column($karya_chart, 'total')); ?>,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>

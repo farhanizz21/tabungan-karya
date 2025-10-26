@@ -39,22 +39,6 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label class="form-label font-weight-bold">Mata Pelajaran<span
-                                class="text-danger">*</span></label>
-                        <select name="namaMapel[]" class="form-control multiple-table" multiple="multiple">
-                            <?php foreach ($mapel as $val): ?>
-                            <option value="<?= $val->uuid; ?>"
-                                <?= in_array($val->uuid, $mapel_list ?? []) ? 'selected' : ''; ?>>
-                                <?= $val->nama; ?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
-
-                        <div class="invalid-feedback <?= !empty(form_error('namaMapel')) ? 'd-block' : '' ; ?> ">
-                            <?= form_error('namaMapel') ?>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
                         <label class="form-label font-weight-bold">Jenis Kelamin<span
                                 class="text-danger">*</span></label>
                         <select class="form-control" name="jenisKelamin">

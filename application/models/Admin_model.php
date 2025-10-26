@@ -2,7 +2,7 @@
 date_default_timezone_set('Asia/Jakarta');
 use Ramsey\Uuid\Uuid;
 
-class guru_model extends CI_Model {
+class admin_model extends CI_Model {
 
     public function rules()
 	{
@@ -15,7 +15,7 @@ class guru_model extends CI_Model {
 			[
 				'field' => 'username',
 				'label' => 'Username',
-				'rules' => 'required|is_unique[guru.username]|regex_match[/^[a-z]/]'
+				'rules' => 'required|is_unique[admin.username]|regex_match[/^[a-z]/]'
 				
 			],
 			[
@@ -42,7 +42,7 @@ class guru_model extends CI_Model {
             'jenis_kelamin' => $jenisKelamin
 		);
 
-		$this->db->insert('guru', $data);
+		$this->db->insert('admin', $data);
 		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {
@@ -62,7 +62,7 @@ class guru_model extends CI_Model {
 			'modified_at' => date("Y-m-d H:i:s"),
 			'created_by' => $this->session->userdata('uuid')
 		);
-		$this->db->update('guru', $data, array('uuid' => $uuid));
+		$this->db->update('admin', $data, array('uuid' => $uuid));
 		return($this->db->affected_rows() > 0) ? true :false;
 	}
 
@@ -70,7 +70,7 @@ class guru_model extends CI_Model {
 	{
 		$this->db->where('deleted_at', NULL, FALSE);
 		$this->db->order_by('nama', 'ASC');
-		$data = $this->db->get('guru')->result();
+		$data = $this->db->get('admin')->result();
 
 		return $data;
 	}
@@ -80,12 +80,12 @@ class guru_model extends CI_Model {
 		$data = array(
 			'deleted_at' => date("Y-m-d H:i:s")
 		);
-		$this->db->update('guru', $data, array('uuid' => $uuid));
+		$this->db->update('admin', $data, array('uuid' => $uuid));
 		return($this->db->affected_rows() > 0) ? true :false;
 	}
 	public function get_by_uuid($uuid)
 	{
-		$data = $this->db->get_where('guru', array('uuid' => $uuid))->row();
+		$data = $this->db->get_where('admin', array('uuid' => $uuid))->row();
 		return $data;
 	}
 

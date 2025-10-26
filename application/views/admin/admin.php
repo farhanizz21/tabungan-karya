@@ -23,7 +23,9 @@
     <h1 class="h3 mb-2 text-gray-800"></h1>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Daftar Karya</h1>
+        <h1 class="h3 mb-2 text-gray-800">Daftar Admin</h1>
+        <a href="<?= base_url('admin/tambah')?>" class="btn btn-md btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
     </div>
 
     <!-- DataTales Example -->
@@ -37,32 +39,37 @@
                     <thead>
                         <tr>
                             <th width="1px">No.</th>
-                            <th>Nama Guru</th>
-                            <th>Jumlah Karya</th>
+                            <th>Nama</th>
+                            <th>Username</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach ($guru as $row): ?>
+                        <?php 
+                            $no = 1;
+                            foreach($admin as $val) {
+                                ?>
                         <tr>
-                            <td align="center">
-                                <?= $no++; ?>
-                            </td>
+                            <td align="center"><?= $no ; ?></td>
+                            <td><?= $val->nama; ?></td>
+                            <td><?= $val->username; ?></td>
+
                             <td>
-                                <?= $row->nama; ?>
-                            </td>
-                            <td>
-                                <?= $row->total_karya; ?>
-                            </td>
-                            <td>
-                                <a href="<?=base_url('karya/list/'.$row->uuid)?>" class="btn btn-sm btn-success"
-                                    data-toggle="tooltip" data-placement="top" title="Lihat Karya Guru">
-                                    <i class="fas fa-eye"></i>
+                                <a href="<?=base_url('admin/edit/'.$val->uuid)?>" class="btn btn-sm btn-warning"
+                                    data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="<?=base_url('admin/hapus/'.$val->uuid)?>" class="btn btn-sm btn-danger"
+                                    data-toggle="tooltip" data-placement="top" title="Hapus Data"
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data <?= $val->nama; ?>?')">
+                                    <i class="fas fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php 
+                            $no++;
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

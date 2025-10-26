@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <link rel="icon" type="image/x-icon" href="<?= base_url('assets/img/Logo_Smartedu.svg'); ?>">
-    <title>Login - Smartedu</title>
+    <title>Login - Tabungan Karya</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
@@ -92,7 +92,8 @@
                                                 <img src="<?= base_url('assets/img/Logo_Smartedu.svg');?>"
                                                     class="w-100">
                                             </div>
-                                            <h1 class="h4 text-gray-900 mb-4">Selamat datang di Smartedu !</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Selamat datang di <br> Tabungan Karya !
+                                            </h1>
                                             <?php if($this->session->flashdata('error_msg')): ?>
                                             <div class="alert alert-danger">
                                                 <?= $this->session->flashdata('error_msg') ?>

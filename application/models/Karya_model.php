@@ -11,11 +11,6 @@ class karya_model extends CI_Model {
 				'field' => 'judul',
 				'label' => 'Judul karya',
 				'rules' => 'required'
-			],
-			[
-				'field' => 'berkas',
-				'label' => 'File',
-				'rules' => 'callback_validate_file_upload'
 			]
         ];
 	}
@@ -23,57 +18,78 @@ class karya_model extends CI_Model {
 	public function get_all()
 	{
 		$this->db->where('deleted_at', NULL, FALSE);
-		$this->db->order_by('judul', 'ASC');
+		$this->db->order_by('modified_at', 'DESC');
 		$data = $this->db->get('karya')->result();
 
 		return $data;
 	}
-
-	public function get_all_karyaku()
+	
+	public function get_by_guru_uuid($uuid)
 	{
+		$this->db->where('created_by', $uuid);
 		$this->db->where('deleted_at', NULL, FALSE);
-		$this->db->where('deleted_at', NULL, FALSE);
-		$this->db->order_by('judul', 'ASC');
+		$this->db->order_by('modified_at', 'DESC');
 		$data = $this->db->get('karya')->result();
 
+	// 	echo "<pre>";
+	// print_r($data);
+	// echo "</pre>";
+	// exit;
 		return $data;
 	}
 
-	public function insert($berkas)
+	public function count_by_guru_uuid($uuid)
+	{
+		$this->db->where('created_by', $uuid);
+		$this->db->where('deleted_at', NULL, FALSE);
+		return $this->db->count_all_results('karya');
+	}
+
+
+	public function insert($data)
 	{
 		$uuid = Uuid::uuid4()->toString();
-		$judul = $this->input->post('judul');
+		$user_uuid = $this->session->userdata('uuid');
 
-		$data = array(
-			'uuid' => $uuid,
-			'judul' => $judul,
-			'berkas' => $berkas,
-			'created_by' => $this->session->userdata('uuid')
+		$insert_data = array(
+			'uuid'         => $uuid,
+			'judul'        => $this->input->post('judul', TRUE),
+			'deskripsi'    => $this->input->post('deskripsi', TRUE)?: NULL,
+			'tipe_upload'  => $data['tipe_upload'],
+			'berkas'       => $data['berkas']?: NULL,
+			'link'   => $data['link']?: NULL,
+			'created_by'   => $user_uuid,
 		);
 
-		// 🔍 DEBUG: tampilkan data sebelum insert
-		echo "<pre>DEBUG DATA:\n";
-		print_r($data);
-		echo "</pre>";
-
-		// Jalankan query insert
-		$this->db->insert('karya', $data);
-
-		// 🔍 DEBUG: tampilkan query SQL yang dijalankan
-		echo "<pre>LAST QUERY: " . $this->db->last_query() . "</pre>";
-
-		// 🔍 DEBUG: tampilkan hasil affected_rows
-		echo "<pre>AFFECTED ROWS: " . $this->db->affected_rows() . "</pre>";
-
-		if ($this->db->affected_rows() > 0) {
-			echo "<pre>INSERT STATUS: SUCCESS</pre>";
-			return true;
-		} else {
-			echo "<pre>INSERT STATUS: FAILED</pre>";
-			return false;
-		}
+		$this->db->insert('karya', $insert_data);
+		return $this->db->affected_rows() > 0;
 	}
 
+
+	public function delete_by_uuid($uuid)
+	{
+		$data = array(
+			'deleted_at' => date("Y-m-d H:i:s")
+		);
+		$this->db->update('karya', $data, array('uuid' => $uuid));
+		return($this->db->affected_rows() > 0) ? true :false;
+	}
 	
+	public function get_by_uuid($uuid)
+	{
+		$this->db->where('uuid', $uuid);
+		$this->db->where('deleted_at', NULL, FALSE);
+		$data = $this->db->get('karya')->row();
+
+		return $data;
+	}
+	
+	public function update($uuid, $data)
+	{
+		$this->db->where('uuid', $uuid);
+		$this->db->update('karya', $data);
+		return ($this->db->affected_rows() > 0);
+	}
+
 }
 ?>
