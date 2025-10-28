@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['base_url'] = 'http://localhost/tabungan-karya/';
-// $config['base_url'] = 'https://3b1ad8f77461.ngrok-free.app/smartedu/';
+// $config['base_url'] = 'https://1a046468786e.ngrok-free.app/tabungan-karya/';
 /*
 |--------------------------------------------------------------------------
 | Index File

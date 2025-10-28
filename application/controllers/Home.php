@@ -27,10 +27,12 @@ class Home extends CI_Controller {
 			'karya_terbaru' => $this->Home_model->get_karya_terbaru(),
         ];
 
-        $this->load->view('partials/header');
-        $this->load->view('partials/sidebar', $data);
-        $this->load->view('partials/topbar');
-        $this->load->view('home/home', $data);
-        $this->load->view('partials/footer');
+        // $this->load->view('partials/header');
+        // $this->load->view('partials/sidebar', $data);
+        // $this->load->view('partials/topbar');
+        // $this->load->view('home/home', $data);
+        // $this->load->view('partials/footer');        
+        $this->load->view('landing/index.html');
+
     }
 }
