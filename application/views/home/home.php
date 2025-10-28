@@ -96,6 +96,7 @@
             <canvas id="chartKaryaGuru" height="120"></canvas>
         </div>
     </div>
+    <?php if($this->session->userdata('role') == 1){?>
     <div class="card shadow mb-4">
         <div class="card-header py-3 bg-primary text-white">
             <h6 class="m-0 font-weight-bold">📂 Karya Terbaru</h6>
@@ -162,6 +163,7 @@
             <?php endif; ?>
         </div>
     </div>
+    <?php } ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

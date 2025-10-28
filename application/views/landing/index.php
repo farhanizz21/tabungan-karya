@@ -206,52 +206,69 @@
                 </div>
             </div>
         </main>
-        <div id="karya" style="scroll-margin-top: 150px;" class="text-center">
-            <hr>
-            <?php if (!empty($karya_terbaru)): ?>
-            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 class="text-3xl font-bold text-navyblue mb-10">Karya Terbaru</h2>
-                <div class="py-5">
-                    <div class="slick-slider space-x-4">
-                        <?php foreach ($karya_terbaru as $k): ?>
-                        <div
-                            class="p-6 bg-white shadow-lg rounded-xl text-left border border-gray-100 transition duration-300 hover:shadow-2xl">
-                            <h3 class="text-xl font-semibold text-navyblue truncate mb-2"
-                                title="<?= htmlspecialchars($k->judul ?? 'Judul Tidak Tersedia', ENT_QUOTES, 'UTF-8'); ?>">
-                                <?= htmlspecialchars($k->judul ?? 'Judul Tidak Tersedia', ENT_QUOTES, 'UTF-8'); ?>
-                            </h3>
-                            <p class="text-sm text-bluegray mb-4">
-                                Oleh: <span
-                                    class="font-medium text-blue"><?= htmlspecialchars($k->nama ?? 'Tidak diketahui', ENT_QUOTES, 'UTF-8'); ?></span>
-                            </p>
-                            <div class="mt-4">
-                                <?php if ($k->tipe_upload == 1): ?>
-                                <a href="<?= base_url('uploads/karya/' . $k->berkas); ?>" target="_blank"
-                                    class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue rounded-lg hover:bg-navyblue transition duration-150 ease-in-out">
-                                    <i class="fas fa-file mr-2"></i> Lihat File
-                                </a>
-                                <?php else: ?>
-                                <a href="<?= $k->link; ?>" target="_blank"
-                                    class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-navyblue transition duration-150 ease-in-out">
-                                    <i class="fas fa-link mr-2"></i> Kunjungi Link
-                                </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
+        <div id="karya" style="scroll-margin-top: 150px;" class="text-center **py-20**">
+            <hr class="mb-12 border-gray-300">
+            <br>
+            <div class="mx-auto **max-w-4xl** px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-semibold text-gray-800 **mb-16**">
+                    Jenis Karya yang Dapat Diunggah
+                </h2>
+                <br>
+                <div class="slick-slider-types">
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-blue-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-blue-300">
+                        <i class="fas fa-video text-blue-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Video</h3>
+
                     </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-red-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-red-300">
+                        <i class="fas fa-book-open text-red-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Novel</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-green-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-green-300">
+                        <i class="fas fa-feather-alt text-green-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Puisi</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-yellow-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-yellow-300">
+                        <i class="fas fa-pencil-alt text-yellow-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Cerpen</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-purple-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-purple-300">
+                        <i class="fas fa-palette text-purple-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Poster</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-indigo-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-indigo-300">
+                        <i class="fas fa-newspaper text-indigo-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Artikel</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-pink-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-pink-300">
+                        <i class="fas fa-book text-pink-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Jurnal</h3>
+                    </div>
+
                 </div>
-                <hr class="mt-10 border-gray-200" />
+
             </div>
-            <?php else: ?>
-            <div class="mx-auto max-w-7xl py-14 px-4 sm:px-6 lg:px-8">
-                <div class="text-center text-muted py-3 bg-gray-50 rounded-lg p-6">
-                    <p class="text-lg text-gray-600 font-medium">Belum ada karya yang diunggah. Saatnya menjadi yang
-                        pertama!</p>
-                </div>
-            </div>
-            <?php endif; ?>
-            <hr>
+            <br>
+            <hr class="mt-12 border-gray-300">
         </div>
         <div id="statistik" class="mx-auto max-w-7xl py-16 px-6">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5">
@@ -337,23 +354,7 @@
                                 href="<?=base_url()?>">Team</a></li>
                     </ul>
                 </div>
-                <div class="col-span-4 md:col-span-4 lg:col-span-4">
-                    <div class="flex gap-2"><img alt="mask-icon" loading="lazy" width="24" height="24" decoding="async"
-                            data-nimg="1" style="color:transparent"
-                            src="<?= base_url('assets/landing/assets/footer/mask.svg')?>" />
-                        <h5 class="text-base font-normal text-offwhite">925 Filbert Street Pennsylvania 18072</h5>
-                    </div>
-                    <div class="flex gap-2 mt-10"><img alt="telephone-icon" loading="lazy" width="24" height="24"
-                            decoding="async" data-nimg="1" style="color:transparent"
-                            src="<?= base_url('assets/landing/assets/footer/telephone.svg')?>" />
-                        <h5 class="text-base font-normal text-offwhite">+ 45 34 11 44 11</h5>
-                    </div>
-                    <div class="flex gap-2 mt-10"><img alt="email-icon" loading="lazy" width="24" height="24"
-                            decoding="async" data-nimg="1" style="color:transparent"
-                            src="<?= base_url('assets/landing/assets/footer/email.svg')?>" />
-                        <h5 class="text-base font-normal text-offwhite">info@gmail.com</h5>
-                    </div>
-                </div>
+
             </div>
             <div class="py-10 lg:flex items-center justify-between border-t border-t-bordertop">
                 <h4 class="text-offwhite text-sm text-center lg:text-start font-normal">@2025 Agency. All Rights
@@ -417,11 +418,16 @@ menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('translate-x-0');
 });
 $(document).ready(function() {
-    $('.slick-slider').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
+    $('.slick-slider-types').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1, // Tetap 1
         autoplay: true,
-        autoplaySpeed: 2000,
+
+        // --- PERUBAHAN UTAMA UNTUK KESAN CONTINUOUS ---
+        autoplaySpeed: 1, // Otomatis berpindah setiap 1ms (segera)
+        speed: 6000, // Waktu transisi yang sangat lama
+        cssEase: 'linear',
+
         arrows: false,
         dots: false,
         infinite: true,
@@ -429,6 +435,19 @@ $(document).ready(function() {
         pauseOnHover: false
     });
 });
+
+// $(document).ready(function(){
+//   $('.slick-slider-types').slick({
+//     dots: true,
+//     infinite: true,
+//     speed: 500,
+//     fade: true, // Opsional: Tambahkan efek fade untuk transisi yang lebih halus
+//     cssEase: 'linear',
+//     slidesToShow: 1, // Kunci: Hanya tampilkan satu slide besar
+//     adaptiveHeight: true,
+//     arrows: true // Tampilkan panah navigasi
+//   });
+// });
 
 function toggleDropdown() {
     // Mendapatkan elemen dropdown berdasarkan ID

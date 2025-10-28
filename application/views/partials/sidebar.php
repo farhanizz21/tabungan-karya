@@ -80,15 +80,15 @@
             </div>
         </div>
     </li>
-    <?php } ?>
     <hr class="sidebar-divider">
-
     <li class="nav-item <?= $active_nav == 'karya' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url('karya') ?>">
             <i class="fas fa-fw fa-folder-open"></i>
             <span>Daftar Karya</span>
         </a>
     </li>
+    <?php } ?>
+
     <?php if($this->session->userdata('role') != 1){?>
     <li class="nav-item <?= $active_nav == 'karyaku' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url('karyaku') ?>">
