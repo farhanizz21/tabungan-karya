@@ -33,7 +33,7 @@ class Auth extends CI_Controller {
 		$password = $this->input->post('password');
 
 		if($this->auth_model->login($username, $password)){
-			redirect(base_url());
+			redirect(base_url('karya'));
 		} else {
 			$this->session->set_flashdata('error_msg', 'Login Gagal, pastikan username dan password benar!');	
         }

@@ -110,7 +110,6 @@
                             <th>Pembuat</th>
                             <th>Waktu Upload</th>
                             <th>Lihat</th>
-                            <th>Komentar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,12 +129,6 @@
                                     <i class="fas fa-link"></i> Lihat Link
                                 </a>
                                 <?php endif; ?>
-                            </td>
-                            <td class="text-center">
-                                <a href="javascript:void(0);" class="btn btn-sm btn-info btn-komentar"
-                                    data-karya_uuid="<?= $k->uuid; ?>" data-judul="<?= htmlspecialchars($k->judul); ?>">
-                                    <i class="fas fa-comments"></i> Komentar
-                                </a>
                             </td>
                         </tr>
                         <?php endforeach; ?>

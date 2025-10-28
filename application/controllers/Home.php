@@ -6,6 +6,7 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Home_model');
+		$this->load->model('Auth_model');
 
 	}
 
@@ -27,7 +28,30 @@ class Home extends CI_Controller {
         // $this->load->view('partials/topbar');
         // $this->load->view('home/home', $data);
         // $this->load->view('partials/footer');        
-        $this->load->view('landing/index');
+        $this->load->view('landing/index', $data);
+    }
 
+    public function dashboard()
+    {
+        if(!$this->Auth_model->current_user()){
+                redirect('login');
+            }
+        $data = [
+            'active_nav'       => 'dashboard',
+            'total_guru'       => $this->Home_model->total_guru(),
+            'total_karya'      => $this->Home_model->total_karya(),
+            'guru_terbanyak'   => $this->Home_model->guru_terbanyak(),
+            'guru_tersedikit'  => $this->Home_model->guru_tersedikit(),
+            'komentar_terbaru' => $this->Home_model->komentar_terbaru(),
+            'karya_chart'      => $this->Home_model->karya_per_guru(),
+			'karya_terbaru' => $this->Home_model->get_karya_terbaru(),
+        ];
+
+        $this->load->view('partials/header');
+        $this->load->view('partials/sidebar', $data);
+        $this->load->view('partials/topbar');
+        $this->load->view('home/home', $data);
+        $this->load->view('partials/footer');        
+        // $this->load->view('landing/index', $data);
     }
 }

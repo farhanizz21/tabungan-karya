@@ -47,6 +47,11 @@
     <li class="nav-item <?= $active_nav == 'home' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url()?>">
             <i class="fas fa-fw fa-tachometer-alt"> </i>
+            <span>Halaman Awal</span></a>
+    </li>
+    <li class="nav-item <?= $active_nav == 'dashboard' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('home/dashboard')?>">
+            <i class="fas fa-fw fa-tachometer-alt"> </i>
             <span>Dashboard</span></a>
     </li>
 
