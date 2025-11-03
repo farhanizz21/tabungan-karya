@@ -126,6 +126,10 @@
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 Login
                                             </button>
+                                            <a href="<?= base_url('home/index') ?>"
+                                                class="btn btn-secondary btn-user btn-block mt-2">
+                                                ← Kembali ke Dashboard
+                                            </a>
                                         </form>
                                     </div>
                                 </div>

@@ -80,14 +80,8 @@
         <div class="mx-auto max-w-7xl px-6 lg:py-4 lg:px-8">
             <div class="relative flex h-20 items-center justify-between">
                 <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
-                    <!-- <div class="flex flex-shrink-0 items-center">
-                        <img class="block h-12 w-40 lg:hidden"
-                            src="<?= base_url('assets/landing/assets/logo/logo.png')?>" alt="dsign-logo" /><img
-                            class="hidden h-full w-full lg:block"
-                            src="<?= base_url('assets/landing/assets/logo/logo.png')?>" alt="dsign-logo" />
-                    </div> -->
                     <div class="hidden lg:block m-auto">
-                        <div class="flex space-x-4"><a
+                        <div id="desktop-menu" class="flex space-x-4"><a
                                 class=" text-black hover:opacity-100 px-3 py-4 text-lg font-normal opacity-75 space-links"
                                 aria-current="page" href="#home">Home</a><a
                                 class="hover:text-black hover:opacity-100 px-3 py-4 text-lg font-normal opacity-75 space-links"
@@ -98,73 +92,87 @@
                                 aria-current="page" href="#contacts">Hubungi Kami</a></div>
                     </div>
                 </div>
-
                 <div class="relative inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:pr-0">
                     <?php if (!empty($this->session->userdata('nama'))): ?>
-
                     <div class="hidden lg:flex items-center space-x-3 ml-9">
-
                         <a href="<?= base_url('home/dashboard') ?>"
                             class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
                             Admin Dashboard
                         </a>
-
                         <a href="<?= base_url('auth/logout') ?>"
                             class="text-sm font-medium px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-150 ease-in-out">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </a>
                     </div>
-
                     <?php else: ?>
-
                     <div class="hidden lg:block">
-                        <a href="<?=base_url("auth/login")?>"
+                        <a href="<?= base_url("auth/login") ?>"
                             class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
                             Masuk
                         </a>
                     </div>
-
                     <?php endif; ?>
                 </div>
-                <div class="block lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
-                        class="block h-6 w-6">
+
+                <div id="menu-toggle" class="block lg:hidden cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" aria-hidden="true" data-slot="icon" class="block h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                    </svg></div>
-                <main
-                    class=" fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out  transition-all delay-500 opacity-0 -translate-x-full  ">
-                    <section
-                        class="w-340px max-w-lg left-0 absolute bg-white h-full shadow-xl delay-400 duration-500 ease-in-out transition-all transform -translate-x-full">
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5">
+                        </path>
+                    </svg>
+                </div>
+                <!-- Menu mobile -->
+                <main id="mobile-nav"
+                    class="fixed inset-0 z-40 hidden overflow-hidden bg-gray-900 bg-opacity-25 transform transition-all duration-300 ease-in-out opacity-0">
+                    <section id="mobile-panel"
+                        class="absolute left-0 top-0 h-full w-72 max-w-full transform -translate-x-full bg-white shadow-xl transition-transform duration-300 ease-in-out">
                         <article class="relative w-270 max-w-lg pb-10 flex flex-col space-y-6 h-full">
-                            <header class="p-4 flex items-center justify-between"><img class="h-12 w-40"
-                                    src="<?= base_url('assets/landing/assets/logo/logo.png')?>"
-                                    alt="Courses-Logo" /><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                    data-slot="icon" class="block h-6 w-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12">
-                                    </path>
-                                </svg></header>
+                            <header class="p-4 flex items-center justify-between">
+                                <button id="menu-close" class="text-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                        class="block h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </header>
                             <div>
                                 <div class="rounded-md max-w-sm w-full mx-auto">
                                     <div class="flex-1 space-y-4 py-1">
                                         <div class="sm:block">
-                                            <div class="space-y-1 px-5 pt-2 pb-3"><a
-                                                    class="text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
-                                                    aria-current="page" href="<?=base_url()?>">Home</a><a
-                                                    class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
-                                                    href="#services">Services</a><a
-                                                    class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
-                                                    href="#about">About</a><a
-                                                    class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
-                                                    href="#project">Project</a><a
-                                                    class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
-                                                    href="<?=base_url()?>">Help</a>
-                                                <div class="mt-4"></div><button
-                                                    class="bg-white w-full text-blue border border-lightblue font-medium py-2 px-4 rounded">Sign
-                                                    In</button><button
-                                                    class="bg-lightblue w-full hover:bg-blue hover:text-white text-blue font-medium my-2 py-2 px-4 rounded">Sign
-                                                    up</button>
+                                            <div class="space-y-1 px-5 pt-2 pb-3">
+                                                <a class="text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
+                                                    aria-current="page" href="<?=base_url()?>">Home</a>
+                                                <a class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
+                                                    href="#karya">Karya</a>
+                                                <a class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
+                                                    href="#statistik">Data Statistik</a>
+                                                <a class="hover:text-black hover:opacity-100 px-2 py-1 text-lg font-normal opacity-75 block"
+                                                    href="#contacts">Hubungi Kami</a>
+                                                <div class="mt-4">
+
+                                                </div>
+                                                <?php if (!empty($this->session->userdata('nama'))): ?>
+                                                <div class="hidden lg:flex items-center space-x-3 ml-9">
+                                                    <a href="<?= base_url('home/dashboard') ?>"
+                                                        class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
+                                                        Admin Dashboard
+                                                    </a>
+                                                    <a href="<?= base_url('auth/logout') ?>"
+                                                        class="text-sm font-medium px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-150 ease-in-out">
+                                                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                                    </a>
+                                                </div>
+                                                <?php else: ?>
+                                                <div class="hidden lg:block">
+                                                    <a href="<?=base_url("auth/login")?>"
+                                                        class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
+                                                        Masuk
+                                                    </a>
+                                                </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +180,8 @@
                             </div>
                         </article>
                     </section>
-                    <section class=" w-screen h-full cursor-pointer "></section>
+                    <section id="menu-overlay" class="absolute inset-0 w-screen h-full cursor-pointer z-40"></section>
+
                 </main>
             </div>
         </div>
@@ -202,32 +211,74 @@
                     </div>
                     <img alt="banner-image" loading="lazy" decoding="async"
                         class="mx-auto mt-10 w-full max-w-lg lg:max-w-lg"
-                        src="<?= base_url('assets/landing/assets/banner/dashboard.JPG')?>" />
+                        src="<?= base_url('assets/landing/assets/banner/dashboard.jpg')?>" />
                 </div>
             </div>
         </main>
-        <div id="karya" style="scroll-margin-top: 150px;" class="text-center py-20">
+        <div id="karya" style="scroll-margin-top: 150px;" class="text-center **py-20**">
             <hr class="mb-12 border-gray-300">
             <br>
-            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-semibold text-gray-800 mb-16">
+            <div class="mx-auto **max-w-4xl** px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-semibold text-gray-800 **mb-16**">
                     Jenis Karya yang Dapat Diunggah
                 </h2>
                 <br>
-
                 <div class="slick-slider-types">
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Video</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Novel</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Puisi</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Cerpen</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Poster</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Artikel</h3>
-                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Jurnal</h3>
-                </div>
-            </div>
-        </div>
-        <hr class="mt-12 border-gray-300">
 
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-blue-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-blue-300">
+                        <i class="fas fa-video text-blue-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Video</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-red-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-red-300">
+                        <i class="fas fa-book-open text-red-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Novel</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-green-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-green-300">
+                        <i class="fas fa-feather-alt text-green-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Puisi</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-yellow-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-yellow-300">
+                        <i class="fas fa-pencil-alt text-yellow-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Cerpen</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-purple-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-purple-300">
+                        <i class="fas fa-palette text-purple-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Poster</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-indigo-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-indigo-300">
+                        <i class="fas fa-newspaper text-indigo-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Artikel</h3>
+
+                    </div>
+
+                    <div
+                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-pink-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-pink-300">
+                        <i class="fas fa-book text-pink-600 **text-7xl** mb-6 block"></i>
+                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Jurnal</h3>
+                    </div>
+
+                </div>
+
+            </div>
+            <br>
+            <hr class="mt-12 border-gray-300">
+        </div>
         <div id="statistik" class="mx-auto max-w-7xl py-16 px-6">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5">
                 <div class="flex flex-col justify-center items-center">
@@ -347,28 +398,45 @@
 document.addEventListener('DOMContentLoaded', () => {
     updateScrollState();
     window.addEventListener('scroll', updateScrollState);
-});
 
-function updateScrollState() {
-    document.documentElement.setAttribute('data-scroll', scrollY);
-}
+    const toggle = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('menu-close');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobilePanel = document.getElementById('mobile-panel');
+    const overlay = document.getElementById('menu-overlay');
 
-const menuBtn = document.querySelector('.block.lg\\:hidden svg');
-const mobileMenu = document.querySelector('nav main');
+    // 🔹 Buka menu
+    toggle.addEventListener('click', () => {
+        console.log('🟢 Hamburger diklik');
+        mobileNav.classList.remove('hidden');
+        setTimeout(() => {
+            mobileNav.classList.add('opacity-100');
+            mobilePanel.classList.remove('-translate-x-full');
+            mobilePanel.classList.add('translate-x-0');
+        }, 10);
+    });
 
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('opacity-0');
-    mobileMenu.classList.toggle('-translate-x-full');
-    mobileMenu.classList.toggle('opacity-100');
-    mobileMenu.classList.toggle('translate-x-0');
-});
-$(document).ready(function() {
+    // 🔹 Tutup menu (klik tombol close)
+    closeBtn.addEventListener('click', closeMenu);
+
+    // 🔹 Tutup menu (klik area luar)
+    overlay.addEventListener('click', closeMenu);
+
+    // 🔹 Fungsi tutup menu
+    function closeMenu() {
+        console.log('🔴 Tutup menu');
+        mobilePanel.classList.add('-translate-x-full');
+        mobilePanel.classList.remove('translate-x-0');
+        mobileNav.classList.remove('opacity-100');
+        setTimeout(() => mobileNav.classList.add('hidden'), 300);
+    }
+
     $('.slick-slider-types').slick({
         slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 1,
-        speed: 6000,
+        speed: 5000,
         cssEase: 'linear',
         arrows: false,
         dots: false,
@@ -379,13 +447,13 @@ $(document).ready(function() {
         responsive: [{
                 breakpoint: 1024, // tablet
                 settings: {
-                    slidesToShow: 4
+                    slidesToShow: 6
                 }
             },
             {
                 breakpoint: 768, // hp landscape
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 5
                 }
             },
             {
@@ -396,21 +464,12 @@ $(document).ready(function() {
             }
         ]
     });
-
 });
 
-// $(document).ready(function(){
-//   $('.slick-slider-types').slick({
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     fade: true, // Opsional: Tambahkan efek fade untuk transisi yang lebih halus
-//     cssEase: 'linear',
-//     slidesToShow: 1, // Kunci: Hanya tampilkan satu slide besar
-//     adaptiveHeight: true,
-//     arrows: true // Tampilkan panah navigasi
-//   });
-// });
+function updateScrollState() {
+    document.documentElement.setAttribute('data-scroll', scrollY);
+}
+
 
 function toggleDropdown() {
     // Mendapatkan elemen dropdown berdasarkan ID

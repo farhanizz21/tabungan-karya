@@ -80,7 +80,15 @@ class auth_model extends CI_Model
 
 	public function logout()
 	{
-		$this->session->unset_userdata(self::SESSION_KEY);
+		$this->session->unset_userdata([
+			self::SESSION_KEY,
+			'username',
+			'nama',
+			'role'
+		]);
+
+		$this->session->sess_destroy();
 		return !$this->session->has_userdata(self::SESSION_KEY);
 	}
+
 }
