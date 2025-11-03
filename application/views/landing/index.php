@@ -211,7 +211,7 @@
                     </div>
                     <img alt="banner-image" loading="lazy" decoding="async"
                         class="mx-auto mt-10 w-full max-w-lg lg:max-w-lg"
-                        src="<?= base_url('assets/landing/assets/banner/dashboard.jpg')?>" />
+                        src="<?= base_url('assets/landing/assets/banner/dashboard.JPG')?>" />
                 </div>
             </div>
         </main>
