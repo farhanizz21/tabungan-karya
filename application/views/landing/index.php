@@ -202,74 +202,32 @@
                     </div>
                     <img alt="banner-image" loading="lazy" decoding="async"
                         class="mx-auto mt-10 w-full max-w-lg lg:max-w-lg"
-                        src="<?= base_url('assets/landing/assets/banner/dashboard.jpg')?>" />
+                        src="<?= base_url('assets/landing/assets/banner/dashboard.JPG')?>" />
                 </div>
             </div>
         </main>
-        <div id="karya" style="scroll-margin-top: 150px;" class="text-center **py-20**">
+        <div id="karya" style="scroll-margin-top: 150px;" class="text-center py-20">
             <hr class="mb-12 border-gray-300">
             <br>
-            <div class="mx-auto **max-w-4xl** px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-semibold text-gray-800 **mb-16**">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-16">
                     Jenis Karya yang Dapat Diunggah
                 </h2>
                 <br>
+
                 <div class="slick-slider-types">
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-blue-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-blue-300">
-                        <i class="fas fa-video text-blue-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Video</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-red-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-red-300">
-                        <i class="fas fa-book-open text-red-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Novel</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-green-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-green-300">
-                        <i class="fas fa-feather-alt text-green-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Puisi</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-yellow-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-yellow-300">
-                        <i class="fas fa-pencil-alt text-yellow-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Cerpen</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-purple-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-purple-300">
-                        <i class="fas fa-palette text-purple-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Poster</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-indigo-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-indigo-300">
-                        <i class="fas fa-newspaper text-indigo-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Artikel</h3>
-
-                    </div>
-
-                    <div
-                        class="**p-10** bg-white rounded-3xl shadow-2xl border-2 border-pink-100 mx-4 transition duration-300 hover:shadow-3xl hover:border-pink-300">
-                        <i class="fas fa-book text-pink-600 **text-7xl** mb-6 block"></i>
-                        <h3 class="text-3xl font-extrabold text-gray-900 mb-2">Jurnal</h3>
-                    </div>
-
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Video</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Novel</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Puisi</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Cerpen</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Poster</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Artikel</h3>
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-2 px-6">Jurnal</h3>
                 </div>
-
             </div>
-            <br>
-            <hr class="mt-12 border-gray-300">
         </div>
+        <hr class="mt-12 border-gray-300">
+
         <div id="statistik" class="mx-auto max-w-7xl py-16 px-6">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5">
                 <div class="flex flex-col justify-center items-center">
@@ -357,20 +315,7 @@
 
             </div>
             <div class="py-10 lg:flex items-center justify-between border-t border-t-bordertop">
-                <h4 class="text-offwhite text-sm text-center lg:text-start font-normal">@2025 Agency. All Rights
-                    Reserved by
-                    <!-- --> <a target="_blank" href="https://getnextjstemplates.com/">
-                        <!-- -->GetNextjsTemplates.
-                    </a> <!-- -->Distributed by
-                    <!-- --> <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>
-                </h4>
-                <div class="flex gap-5 mt-5 lg:mt-0 justify-center lg:justify-start">
-                    <h4 class="text-offwhite text-sm font-normal"><a href="#!" class="cursor-pointer">Privacy policy</a>
-                    </h4>
-                    <div class="h-5 bg-bordertop w-0.5"></div>
-                    <h4 class="text-offwhite text-sm font-normal"><a href="#!" class="cursor-pointer">Terms &amp;
-                            conditions</a></h4>
-                </div>
+
             </div>
         </div>
     </div>
@@ -420,20 +365,38 @@ menuBtn.addEventListener('click', () => {
 $(document).ready(function() {
     $('.slick-slider-types').slick({
         slidesToShow: 6,
-        slidesToScroll: 1, // Tetap 1
+        slidesToScroll: 1,
         autoplay: true,
-
-        // --- PERUBAHAN UTAMA UNTUK KESAN CONTINUOUS ---
-        autoplaySpeed: 1, // Otomatis berpindah setiap 1ms (segera)
-        speed: 6000, // Waktu transisi yang sangat lama
+        autoplaySpeed: 1,
+        speed: 6000,
         cssEase: 'linear',
-
         arrows: false,
         dots: false,
         infinite: true,
         centerMode: false,
-        pauseOnHover: false
+        pauseOnHover: false,
+
+        responsive: [{
+                breakpoint: 1024, // tablet
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 768, // hp landscape
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480, // hp kecil
+                settings: {
+                    slidesToShow: 3
+                }
+            }
+        ]
     });
+
 });
 
 // $(document).ready(function(){

@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['base_url'] = 'http://localhost/tabungan-karya/';
-// $config['base_url'] = 'https://1a046468786e.ngrok-free.app/tabungan-karya/';
+// $config['base_url'] = 'https://88f45c0323ed.ngrok-free.app/tabungan-karya/';
 /*
 |--------------------------------------------------------------------------
 | Index File
