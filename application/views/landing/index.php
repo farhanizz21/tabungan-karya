@@ -125,8 +125,9 @@
                 <!-- Menu mobile -->
                 <main id="mobile-nav"
                     class="fixed inset-0 z-40 hidden overflow-hidden bg-gray-900 bg-opacity-25 transform transition-all duration-300 ease-in-out opacity-0">
+                    <section id="menu-overlay" class="absolute inset-0 w-screen h-full cursor-pointer z-40"></section>
                     <section id="mobile-panel"
-                        class="absolute left-0 top-0 h-full w-72 max-w-full transform -translate-x-full bg-white shadow-xl transition-transform duration-300 ease-in-out">
+                        class="absolute left-0 top-0 h-full w-72 ... bg-white shadow-xl transition-transform duration-300 ease-in-out z-50">
                         <article class="relative w-270 max-w-lg pb-10 flex flex-col space-y-6 h-full">
                             <header class="p-4 flex items-center justify-between">
                                 <button id="menu-close" class="text-gray-700">
@@ -155,24 +156,25 @@
 
                                                 </div>
                                                 <?php if (!empty($this->session->userdata('nama'))): ?>
-                                                <div class="hidden lg:flex items-center space-x-3 ml-9">
+                                                <div class="flex flex-col space-y-3 mt-5">
                                                     <a href="<?= base_url('home/dashboard') ?>"
-                                                        class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
+                                                        class="block w-full text-center text-blue text-lg font-semibold py-3 rounded-xl transition duration-150 ease-in-out bg-lightblue hover:bg-blue hover:text-white">
                                                         Admin Dashboard
                                                     </a>
                                                     <a href="<?= base_url('auth/logout') ?>"
-                                                        class="text-sm font-medium px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-150 ease-in-out">
+                                                        class="block w-full text-center text-white text-base font-medium py-3 rounded-xl bg-red-500 hover:bg-red-600 transition duration-150 ease-in-out">
                                                         <i class="fas fa-sign-out-alt mr-2"></i> Logout
                                                     </a>
                                                 </div>
                                                 <?php else: ?>
-                                                <div class="hidden lg:block">
-                                                    <a href="<?=base_url("auth/login")?>"
-                                                        class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
+                                                <div class="flex flex-col mt-5">
+                                                    <a href="<?= base_url('auth/login') ?>"
+                                                        class="block w-full text-center text-blue text-lg font-semibold py-3 rounded-xl transition duration-150 ease-in-out bg-lightblue hover:bg-blue hover:text-white">
                                                         Masuk
                                                     </a>
                                                 </div>
                                                 <?php endif; ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +182,6 @@
                             </div>
                         </article>
                     </section>
-                    <section id="menu-overlay" class="absolute inset-0 w-screen h-full cursor-pointer z-40"></section>
 
                 </main>
             </div>
@@ -399,37 +400,84 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollState();
     window.addEventListener('scroll', updateScrollState);
 
-    const toggle = document.getElementById('menu-toggle');
-    const closeBtn = document.getElementById('menu-close');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobilePanel = document.getElementById('mobile-panel');
-    const overlay = document.getElementById('menu-overlay');
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileNav = document.getElementById("mobile-nav");
+    const mobilePanel = document.getElementById("mobile-panel");
+    const menuClose = document.getElementById("menu-close");
+    const menuOverlay = document.getElementById("menu-overlay");
 
-    // 🔹 Buka menu
-    toggle.addEventListener('click', () => {
-        console.log('🟢 Hamburger diklik');
-        mobileNav.classList.remove('hidden');
+    // Fungsi untuk buka menu
+    function openMenu() {
+        console.log("Menu dibuka");
+        mobileNav.classList.remove("hidden");
         setTimeout(() => {
-            mobileNav.classList.add('opacity-100');
-            mobilePanel.classList.remove('-translate-x-full');
-            mobilePanel.classList.add('translate-x-0');
+            mobileNav.classList.remove("opacity-0");
+            mobilePanel.classList.remove("-translate-x-full");
         }, 10);
+    }
+
+    // Fungsi untuk tutup menu
+    function closeMenu() {
+        console.log("Menu ditutup");
+        mobileNav.classList.add("opacity-0");
+        mobilePanel.classList.add("-translate-x-full");
+        setTimeout(() => {
+            mobileNav.classList.add("hidden");
+        }, 300);
+    }
+
+    // Klik hamburger → buka menu
+    menuToggle.addEventListener("click", () => {
+        console.log("Klik hamburger icon");
+        openMenu();
     });
 
-    // 🔹 Tutup menu (klik tombol close)
-    closeBtn.addEventListener('click', closeMenu);
+    // Klik tombol close → tutup menu
+    menuClose.addEventListener("click", () => {
+        console.log("Klik tombol close (X)");
+        closeMenu();
+    });
 
-    // 🔹 Tutup menu (klik area luar)
-    overlay.addEventListener('click', closeMenu);
+    // Klik overlay → tutup menu
+    menuOverlay.addEventListener("click", () => {
+        console.log("Klik overlay di luar panel");
+        closeMenu();
+    });
 
-    // 🔹 Fungsi tutup menu
-    function closeMenu() {
-        console.log('🔴 Tutup menu');
-        mobilePanel.classList.add('-translate-x-full');
-        mobilePanel.classList.remove('translate-x-0');
-        mobileNav.classList.remove('opacity-100');
-        setTimeout(() => mobileNav.classList.add('hidden'), 300);
-    }
+    // Debug semua klik di dalam panel
+    mobilePanel.addEventListener("click", (e) => {
+        const target = e.target.closest("a, button");
+        if (target) {
+            console.log("Klik elemen di panel:", target.tagName, target.textContent.trim(), "→", target
+                .getAttribute("href"));
+        } else {
+            console.log("Klik area kosong di panel drawer");
+        }
+    });
+
+    // Tangani klik pada link
+    const links = mobilePanel.querySelectorAll("a");
+    links.forEach(link => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            console.log("Klik link:", href);
+
+            // Jika link ke anchor (#bagian)
+            if (href && href.startsWith("#")) {
+                console.log("Navigasi internal ke:", href);
+                closeMenu();
+                return;
+            }
+
+            // Jika ke halaman lain
+            e.preventDefault();
+            closeMenu();
+            console.log("Menunggu animasi sebelum pindah halaman:", href);
+            setTimeout(() => {
+                window.location.href = href;
+            }, 200);
+        });
+    });
 
     $('.slick-slider-types').slick({
         slidesToShow: 6,
