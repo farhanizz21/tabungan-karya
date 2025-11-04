@@ -87,16 +87,21 @@
             <span>Daftar Karya</span>
         </a>
     </li>
+
+    <hr class="sidebar-divider">
     <?php } ?>
-    <hr>
+
 
     <?php if($this->session->userdata('role') != 1){?>
+
+    <hr class="sidebar-divider">
     <li class="nav-item <?= $active_nav == 'karyaku' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url('karyaku') ?>">
             <i class="fas fa-fw fa-user-edit"></i>
             <span>Karya Saya</span>
         </a>
     </li>
+    <hr class="sidebar-divider">
     <?php } ?>
     <li class="nav-item <?= $active_nav == 'reset_password' ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= base_url('guru/reset_password/'.$this->session->userdata('uuid')) ?>">

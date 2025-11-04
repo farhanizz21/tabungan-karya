@@ -146,7 +146,7 @@ class Guru extends CI_Controller {
             $this->session->set_flashdata('error_msg', 'Password gagal diubah atau user tidak ditemukan');
         }
 
-        redirect('guru');
+        redirect('guru/reset_password/' . $uuid);
     }
 
     // --- 4️⃣ Jika belum submit, tampilkan form ---

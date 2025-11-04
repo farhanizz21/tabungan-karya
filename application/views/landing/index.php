@@ -97,7 +97,7 @@
                     <div class="hidden lg:flex items-center space-x-3 ml-9">
                         <a href="<?= base_url('home/dashboard') ?>"
                             class="text-blue text-lg font-medium ml-9 py-5 px-16 transition duration-150 ease-in-out leafbutton bg-lightblue hover:text-white hover:bg-blue">
-                            Admin Dashboard
+                            Dashboard
                         </a>
                         <a href="<?= base_url('auth/logout') ?>"
                             class="text-sm font-medium px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition duration-150 ease-in-out">
@@ -159,7 +159,7 @@
                                                 <div class="flex flex-col space-y-3 mt-5">
                                                     <a href="<?= base_url('home/dashboard') ?>"
                                                         class="block w-full text-center text-blue text-lg font-semibold py-3 rounded-xl transition duration-150 ease-in-out bg-lightblue hover:bg-blue hover:text-white">
-                                                        Admin Dashboard
+                                                        Dashboard
                                                     </a>
                                                     <a href="<?= base_url('auth/logout') ?>"
                                                         class="block w-full text-center text-white text-base font-medium py-3 rounded-xl bg-red-500 hover:bg-red-600 transition duration-150 ease-in-out">

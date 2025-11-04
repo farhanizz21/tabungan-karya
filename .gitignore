@@ -32,3 +32,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 uploads/karya/
+
+application/config/database.php
+application/config/config.php
