@@ -109,40 +109,81 @@ class Guru extends CI_Controller {
 		$this->load->view('partials/footer');
 	}
 
-	public function reset_password($uuid){
-		$rules = [
-			[
-				'field' => 'password',
-				'label' => 'Nama Lengkap',
-				'rules' => 'required'
-			]
-		];
-		$this->form_validation->set_rules($rules);
+	public function reset_password($uuid)
+{
+    // --- 1️⃣ Validasi form ---
+    $rules = [
+        [
+            'field' => 'password',
+            'label' => 'Password',
+            'rules' => 'required'
+        ]
+    ];
+    $this->form_validation->set_rules($rules);
 
-		if ($this->form_validation->run() == TRUE) {
-			$update = $this->Guru_model->reset_password($uuid);
-			if ($update) {
-				$this->session->set_flashdata('success_msg', 'Password berhasil di ubah');
-				redirect('guru');
-			}else {
-				$this->session->set_flashdata('error_msg', 'Password gagal di ubah');
-				redirect('guru');
-			}
-		}
+    // --- 2️⃣ Jika form disubmit dan valid ---
+    if ($this->form_validation->run() == TRUE) {
+        // Cek di tabel guru
+        $guru = $this->Guru_model->get_by_uuid($uuid);
 
-		$guru = $this->Guru_model->get_by_uuid($uuid);
+        if ($guru) {
+            $update = $this->Guru_model->reset_password($uuid);
+        } else {
+            // Jika tidak ditemukan di tabel guru, cek tabel admin
+            $this->load->model('Admin_model');
+            $admin = $this->Admin_model->get_by_uuid($uuid);
+            if ($admin) {
+                $update = $this->Admin_model->reset_password($uuid);
+            } else {
+                $update = false;
+            }
+        }
 
-		$data = array(
-			'guru' => $guru,
-			'active_nav' => 'guru'
-		);
+        // --- 3️⃣ Tampilkan hasil update ---
+        if ($update) {
+            $this->session->set_flashdata('success_msg', 'Password berhasil diubah');
+        } else {
+            $this->session->set_flashdata('error_msg', 'Password gagal diubah atau user tidak ditemukan');
+        }
 
-		$this->load->view('partials/header');
-		$this->load->view('partials/sidebar',$data);
-        $this->load->view('partials/topbar');
-        $this->load->view('guru/guru-reset-password', $data);
-		$this->load->view('partials/footer');
-	}
+        redirect('guru');
+    }
+
+    // --- 4️⃣ Jika belum submit, tampilkan form ---
+    $guru = $this->Guru_model->get_by_uuid($uuid);
+
+    if ($guru) {
+        $data = [
+            'guru' => $guru,
+            // 'role' => 'guru',
+            'active_nav' => 'reset_password'
+        ];
+    } else {
+        // Jika tidak ada di tabel guru, cek tabel admin
+        $this->load->model('Admin_model');
+        $admin = $this->Admin_model->get_by_uuid($uuid);
+
+        if ($admin) {
+            $data = [
+                'guru' => $admin, // masih bisa pakai key 'guru' supaya view tidak perlu diubah
+                // 'role' => 'admin',
+                'active_nav' => 'reset_password'
+            ];
+        } else {
+            // Kalau tidak ditemukan sama sekali
+            show_404();
+            return;
+        }
+    }
+
+    // --- 5️⃣ Load view ---
+    $this->load->view('partials/header');
+    $this->load->view('partials/sidebar', $data);
+    $this->load->view('partials/topbar');
+    $this->load->view('guru/guru-reset-password', $data);
+    $this->load->view('partials/footer');
+}
+
 
 	public function username_check($username, $uuid)
 	{

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'https://tabungankaryasman3sby.com/';
-$config['base_url'] = 'http://localhost/tabungan-karya/';
+$config['base_url'] = 'http://localhost:8888/tabungan-karya/';
 // $config['base_url'] = 'https://88f45c0323ed.ngrok-free.app/tabungan-karya/';
 /*
 |--------------------------------------------------------------------------

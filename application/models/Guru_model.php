@@ -71,7 +71,7 @@ class guru_model extends CI_Model {
 	{
 		$password = $this->input->post('password');
 		$data = array(
-            'password' =>  password_hash($password),
+			'password' => password_hash($password, PASSWORD_DEFAULT),
 			'modified_at' => date("Y-m-d H:i:s"),
 		);
 		$this->db->update('guru', $data, array('uuid' => $uuid));

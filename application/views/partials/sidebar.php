@@ -88,6 +88,7 @@
         </a>
     </li>
     <?php } ?>
+    <hr>
 
     <?php if($this->session->userdata('role') != 1){?>
     <li class="nav-item <?= $active_nav == 'karyaku' ? 'active' : ''; ?>">
@@ -97,13 +98,13 @@
         </a>
     </li>
     <?php } ?>
-    <hr>
     <li class="nav-item <?= $active_nav == 'reset_password' ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= base_url('reset_password') ?>">
+        <a class="nav-link" href="<?= base_url('guru/reset_password/'.$this->session->userdata('uuid')) ?>">
             <i class="fas fa-fw fa-user-edit"></i>
             <span>Reset Password</span>
         </a>
     </li>
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">

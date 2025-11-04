@@ -75,6 +75,19 @@ class admin_model extends CI_Model {
 		return $data;
 	}
 
+
+	public function reset_password($uuid)
+	{
+		$password = $this->input->post('password');
+		$data = array(
+
+			'password' => password_hash($password, PASSWORD_DEFAULT),
+			'modified_at' => date("Y-m-d H:i:s"),
+		);
+		$this->db->update('admin', $data, array('uuid' => $uuid));
+		return($this->db->affected_rows() > 0) ? true :false;
+	}
+
 	public function delete_by_uuid($uuid)
 	{
 		$data = array(

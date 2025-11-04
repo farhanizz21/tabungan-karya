@@ -27,7 +27,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form class="user" method="post" action="<?= base_url('guru/reset-password/' . $guru->uuid); ?>">
+            <form class="user" method="post" action="<?= base_url('guru/reset_password/' . $guru->uuid); ?>">
                 <input type="hidden" name="uuid" value="<?= $guru->uuid ?>">
 
                 <!-- Input Password Baru -->
