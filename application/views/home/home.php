@@ -99,7 +99,7 @@
                     <tbody>
                         <?php foreach ($karya_terbaru as $k): ?>
                         <tr>
-                            <td><?= htmlspecialchars($k->judul, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?= htmlspecialchars($k->judul ?? 'Tidak diketahui', ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?= htmlspecialchars($k->nama ?? 'Tidak diketahui', ENT_QUOTES, 'UTF-8'); ?></td>
                             <td><?= date('d M Y, H:i', strtotime($k->modified_at)); ?> WIB</td>
                             <td class="text-center">

@@ -109,6 +109,41 @@ class Guru extends CI_Controller {
 		$this->load->view('partials/footer');
 	}
 
+	public function reset_password($uuid){
+		$rules = [
+			[
+				'field' => 'password',
+				'label' => 'Nama Lengkap',
+				'rules' => 'required'
+			]
+		];
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run() == TRUE) {
+			$update = $this->Guru_model->reset_password($uuid);
+			if ($update) {
+				$this->session->set_flashdata('success_msg', 'Password berhasil di ubah');
+				redirect('guru');
+			}else {
+				$this->session->set_flashdata('error_msg', 'Password gagal di ubah');
+				redirect('guru');
+			}
+		}
+
+		$guru = $this->Guru_model->get_by_uuid($uuid);
+
+		$data = array(
+			'guru' => $guru,
+			'active_nav' => 'guru'
+		);
+
+		$this->load->view('partials/header');
+		$this->load->view('partials/sidebar',$data);
+        $this->load->view('partials/topbar');
+        $this->load->view('guru/guru-reset-password', $data);
+		$this->load->view('partials/footer');
+	}
+
 	public function username_check($username, $uuid)
 	{
 		$uuid = $this->input->post('uuid'); // atau sesuaikan dengan cara kamu ambil ID

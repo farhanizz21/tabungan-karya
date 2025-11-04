@@ -97,6 +97,13 @@
         </a>
     </li>
     <?php } ?>
+    <hr>
+    <li class="nav-item <?= $active_nav == 'reset_password' ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('reset_password') ?>">
+            <i class="fas fa-fw fa-user-edit"></i>
+            <span>Reset Password</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">

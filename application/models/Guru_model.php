@@ -66,6 +66,18 @@ class guru_model extends CI_Model {
 		return($this->db->affected_rows() > 0) ? true :false;
 	}
 
+
+	public function reset_password($uuid)
+	{
+		$password = $this->input->post('password');
+		$data = array(
+            'password' =>  password_hash($password),
+			'modified_at' => date("Y-m-d H:i:s"),
+		);
+		$this->db->update('guru', $data, array('uuid' => $uuid));
+		return($this->db->affected_rows() > 0) ? true :false;
+	}
+
 	public function get_all()
 	{
 		$this->db->where('deleted_at', NULL, FALSE);
